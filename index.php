@@ -38,7 +38,7 @@ $obj->insertdata($post);
                 <input type="text" name="city" placeholder="Enter your city" class="form-control">
             </div>
             <div class="form-group">
-                <button type="submit" name="submit" class="btn btn-info">Submit</button>
+                <button type="submit" name="submit" class="btn btn-success">Submit</button>
             </div>
             <div class="form-group">
                 <label>Searching:</label>
@@ -47,7 +47,7 @@ $obj->insertdata($post);
         </form>
         <h2 class="text-center">Display Employee Information</h2>
         <table class="table table-bordered">
-            <thead>
+            <thead class="thead-dark">
                 <tr class="bg-primary text-center">
                     <th>S no.</th>
                     <th>Name</th>
@@ -56,6 +56,24 @@ $obj->insertdata($post);
                     <th>City</th>
                 </tr>
             </thead>
+            <tbody>
+                <!-- Show table records -->
+                <?php
+                $data = $obj->selectdata();
+                $sno = 1;
+                foreach($data as $value) {
+                    ?>
+                    <tr class="text-center">
+                        <td><?php echo $sno++; ?></td>
+                        <td><?php echo $value['name']; ?></td>
+                        <td><?php echo $value['email']; ?></td>
+                        <td><?php echo $value['salary']; ?></td>
+                        <td><?php echo $value['city']; ?></td>                        
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
         </table>
     </div>
 </body>
