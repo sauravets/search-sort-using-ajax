@@ -15,6 +15,8 @@ $obj->insertdata($post);
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -42,7 +44,7 @@ $obj->insertdata($post);
             </div>
             <div class="form-group">
                 <label>Searching:</label>
-                <input type="text" name="search" class="form-control" placeholder="search from table">
+                <input type="text" name="search" id="search" class="form-control" autocomplete="off" placeholder="search from table">
             </div>
         </form>
         <h2 class="text-center">Display Employee Information</h2>
@@ -56,7 +58,7 @@ $obj->insertdata($post);
                     <th>City</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="emp_table">
                 <!-- Show table records -->
                 <?php
                 $data = $obj->selectdata();
@@ -68,7 +70,7 @@ $obj->insertdata($post);
                         <td><?php echo $value['name']; ?></td>
                         <td><?php echo $value['email']; ?></td>
                         <td><?php echo $value['salary']; ?></td>
-                        <td><?php echo $value['city']; ?></td>                        
+                        <td><?php echo $value['city']; ?></td>
                     </tr>
                     <?php
                 }

@@ -41,4 +41,3 @@ Class Query
 
 }
 $obj = new Query();
-?>
