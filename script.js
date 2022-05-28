@@ -1,22 +1,16 @@
 $(document).ready(function () {
-    $("#search").on('keyup', function () {
-        let value = $(this).val();        
-        $.ajax({
-            url: "conn.php",
-            method: "POST",
-            data: {value: value},
-            success: function (data)
-            {               
-                // if (data == 1) {
-                //     document.write("insert");
-                // }
-                // else{
-                //     document.write("insert not");
-
-                // }                
-               $("#emp_table").html(data);
-            },
-           // error: function(e, ts, et) { alert(ts) }
-        });
+    $("#search").keyup( function () {
+        let input = $(this).val();    
+        if(input != ''){
+            $.ajax({
+                url: "handle.php",
+                method: "POST",
+                data: {input: input},
+                success: function (data)
+                {                              
+                   $("#search_result").html(data);
+                },
+            })
+        }    
     });
 });
