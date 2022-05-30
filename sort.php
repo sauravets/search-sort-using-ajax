@@ -1,11 +1,9 @@
 <?php
 include 'conn.php';
 
-if (isset($_POST['input'])) {
-    $input = $_POST['input'];
     $columnName = $_POST['columnName'];
     $sort = $_POST['sort'];
-    $query = "SELECT * FROM user WHERE name LIKE '{$input}%' OR email LIKE '{$input}%' OR salary LIKE '{$input}%' OR city LIKE '{$input}%' ";
+    $query = "SELECT * FROM user ORDER BY ".$columnName." ".$sort." ";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) { ?>
         <?php
@@ -30,4 +28,3 @@ if (isset($_POST['input'])) {
         echo "<h3 class = 'text-danger text-center mt-3'>No Result Found</h3>";
     }
     ?>
-<?php } ?>

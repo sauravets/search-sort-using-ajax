@@ -8,9 +8,36 @@ $(document).ready(function () {
                 data: {input: input},
                 success: function (data)
                 {                              
-                   $("#search_result").html(data);
+                   $("#tbody").html(data);
                 },
             })
         }    
     });
+    $(document).on("click","#table_head",function(){
+        sortTable();
+    })
+        
+   
 });
+    function sortTable(columnName){
+ 
+        let sort = $("#sort").val();
+        console.log("here")
+        $.ajax({
+         url:'sort.php',
+         type:'post',
+         data:{columnName:columnName,sort:sort},
+         success: function(response){
+        
+          $("#empTable tr:not(:first)").remove();
+        
+          $("#empTable").append(response);
+          if(sort == "asc"){
+            $("#sort").val("desc");
+          }else{
+            $("#sort").val("asc");
+          }
+        
+         }
+        });
+       }
