@@ -2,6 +2,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,11 +15,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js"></script>
 </head>
+
 <body>
     <div class="container">
         <h2 class="text-center">Employee Information</h2>
         <form action="index.php" method="POST">
-        <div class="form-group">
+            <div class="form-group">
                 <label>Searching:</label>
                 <input type="text" name="search" id="search" class="form-control" autocomplete="off" placeholder="search from table">
             </div>
@@ -31,7 +33,8 @@
             </select>
         </div>
         <div id="search_result"></div>
-        
+
     </div>
 </body>
+
 </html>
