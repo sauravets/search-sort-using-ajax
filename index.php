@@ -1,5 +1,6 @@
 <?php
 include 'conn.php';
+include 'insert.php';
 
 ?>
 <!DOCTYPE html>
@@ -30,24 +31,57 @@ include 'conn.php';
 <body>
     <div class="container">
 
-        <h2 class="text-center">Employee Information</h2>
-        <form action="index.php" method="POST">
+    <h2 class="text-center">Please Fill To Register An Account</h2>
+        <form action="index.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name" placeholder="Enter your name" class="form-control"><br>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" name="email" placeholder="Enter your mail" autocomplete="off" class="form-control"><br>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" autocomplete="new-password" name="pass" placeholder="Enter your password" class="form-control"><br>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password:</label>
+                <input type="password" autocomplete="new-password" name="cpass" placeholder="Enter your password" class="form-control"><br>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label><br>
+                <label>Male</label>
+                <input type="radio" name="gender" id="male" value="male" checked><br>
+                <label>Female</label>
+                <input type="radio" name="gender" id="female" value="female"><br>
+            </div>
+            <div class="form-group">
+            <input type="file" name="imageUpload" id="imageUpload">
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-info">Submit to register</button>
+               <a href="login.php"><button type="button" name="login" class="btn btn-info">Login</button></a> 
+            </div>
+            <br>
+            <h2 class="text-center">Employee Information</h2>
             <div class="form-group">
                 <label>Searching:</label>
                 <input type="text" name="search" id="search" class="form-control" autocomplete="off" placeholder="search from table">
             </div>
         </form>
         <br>
+       
         <input type='hidden' id='sort' value='asc'>
         <h3 class="text-primary text-center">Click Column Heading For Sorting Table Data</h3><br>
         <table class="table table-bordered" id="empTable">
             <thead class="thead-dark">
-                <tr class="bg-primary text-center" >
-                    <th id="table_head">ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Salary</th>
-                    <th>City</th>
+                <tr class="bg-primary text-center">
+                    <th><a class="column_sort" href="#"> ID</a></th>
+                    <th class="column_sort">Name</th>
+                    <th class="column_sort">Email</th>
+                    <th class="column_sort">Salary</th>
+                    <th class="column_sort"> City</th>
                 </tr>
             </thead>
             <tbody id="tbody">

@@ -13,14 +13,16 @@ $(document).ready(function () {
             })
         }    
     });
-    $(document).on("click","#table_head",function(){
-        sortTable();
-    })
-        
    
 });
+$(document).on("click",".column_sort",function(){
+    sortTable();
+    // $('#tbody').hide();
+   
+})
+
     function sortTable(columnName){
- 
+      
         let sort = $("#sort").val();
         console.log("here")
         $.ajax({
