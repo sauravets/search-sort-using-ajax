@@ -13,8 +13,47 @@ $(document).ready(function () {
             })
         }    
     });
-   
+
+    //jquery validation-
+    //validation for email
+    $('#email').keyup(function(){
+        if(validateEmail()){
+            $("#emailmsg").html('Validated');
+            $("#emailmsg").css('color','green');
+        }
+        else{
+            $("#emailmsg").html('Unvalid Email');
+            $("#emailmsg").css('color','red');
+        }
+    });
+    function validateEmail(){
+        let email = $("#email").val();
+        let regex = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+        if(regex.test(email)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    //validation for password and confirm password
+    $('#cpass').keyup(function(){
+        let pwd = $('#pwd').val();
+        let cpass = $('#cpass').val();
+
+        if(cpass != pwd){
+            $('#showErrorcPwd').html('**Password are not matching');
+            $('#showErrorcPwd').css('color','red');
+            return false;
+        }
+        else{
+            $('#showErrorcPwd').html('');
+            return true;
+        }
+    });
+     
 });
+
 $(document).on("click",".column_sort",function(){
     sortTable();
     // $('#tbody').hide();

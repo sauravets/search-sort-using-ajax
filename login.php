@@ -1,3 +1,27 @@
+<?php
+include 'conn.php';
+session_start();
+
+if(isset($_REQUEST['login'])){
+    $email = $_REQUEST['email'];
+    $pass = $_REQUEST['pass'];
+    $sql = "SELECT * FROM userRegistration WHERE email = '$email' && pass = '$pass' " ;
+    $res = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($res)>0){
+        $_SESSION['email'] = $email;
+    //    echo "login successfully";
+    header('location:welcome.php');
+    }
+    else{
+        echo '<div class="alert alert-danger" role="alert">
+        Your email and password is incorrect.
+      </div>';
+    }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +52,7 @@
             </div>
     </div>
         </form>
+
 
 </body>
 </html>
