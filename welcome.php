@@ -15,6 +15,7 @@ include 'conn.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js"></script>
 </head>
+
 <style>
     th {
         cursor: pointer;

@@ -18,8 +18,6 @@ if(isset($_REQUEST['login'])){
       </div>';
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +50,6 @@ if(isset($_REQUEST['login'])){
             </div>
     </div>
         </form>
-
 
 </body>
 </html>
