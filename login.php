@@ -5,10 +5,17 @@ session_start();
 if(isset($_REQUEST['login'])){
     $email = $_REQUEST['email'];
     $pass = $_REQUEST['pass'];
-    $sql = "SELECT * FROM userRegistration WHERE email = '$email' && pass = '$pass' " ;
+    $pass = md5($pass);
+    $sql = "SELECT * FROM userRegistration WHERE email = '$email' && pass = '$pass'" ;
     $res = mysqli_query($conn,$sql);
-    if(mysqli_num_rows($res)>0){
+    $new = mysqli_num_rows($res);
+    if($new)
+    {
+        $email_pass = mysqli_fetch_assoc($res);
+        $_SESSION['name'] = $email_pass['name'];
         $_SESSION['email'] = $email;
+        $_SESSION['imageUpload'] = $email_pass['imageUpload'];
+        // $_SESSION['name'] = $name;
     //    echo "login successfully";
     header('location:welcome.php');
     }

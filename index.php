@@ -26,11 +26,13 @@ include 'insert.php';
         <form action="index.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Name:</label>
-                <input type="text" name="name" placeholder="Enter your name" class="form-control">
+                <input type="text" name="name" value="<?php if (
+     isset($_POST['name']) && !empty($_POST['name'])) { echo $name; } ?>" placeholder="Enter your name" class="form-control">
             </div>
             <div class="form-group">
                 <label>Email:</label>
-                <input type="text" name="email" id="email" placeholder="Enter your mail" autocomplete="off" class="form-control">
+                <input type="text" name="email" id="email" value="<?php if (
+     isset($_POST['email']) && !empty($_POST['email'])) { echo $email; } ?>" placeholder="Enter your mail" autocomplete="off" class="form-control">
                 <div id="emailmsg"></div>
             </div>
             

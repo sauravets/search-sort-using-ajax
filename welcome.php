@@ -1,5 +1,11 @@
 <?php 
 include 'conn.php';
+session_start();
+if(!isset($_SESSION['email'])){
+    echo "you are logged out";
+header('location:login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +13,7 @@ include 'conn.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Welcome To Login Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -24,6 +30,11 @@ include 'conn.php';
     table {
         border-collapse: separate;
     }
+    .img_user{
+        height: 60px;
+        width: 60px;
+        border-radius: 30px;
+    }
 </style>
 
 <body>
@@ -39,9 +50,19 @@ include 'conn.php';
         <a class="nav-link text-primary" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Logout</button>
-    </form>
+    <!-- <ul class="navbar-nav mr-auto"> -->
+      <div class="nav-item active">
+        <a class="nav-link text-success" href="">HELLO <strong><?php echo $_SESSION['name'];?> </strong> <span class="sr-only">(current)</span></a>
+</div>
+    <!-- </ul> -->
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+  <img class="img_user" src="<?php echo $_SESSION['imageUpload'];?>" alt="">
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="logout.php">Logout</a>
+  </div>
+</div>
   </div>
 </nav>
     <div class="container">
